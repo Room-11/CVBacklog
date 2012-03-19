@@ -8,6 +8,7 @@ ini_set('error_log', $appRoot('/error.log'));
 ini_set('display_errors', isset($_GET['debug']));
 ini_set('display_startup_errors', isset($_GET['debug']));
 ini_set('arg_separator.output', '&');
+ini_set('zlib.output_compression', 1);
 
 stream_context_set_default(
     array(
