@@ -1,6 +1,14 @@
 <?php namespace com\github\gooh\CVBacklog;
-// ini_set('display_errors', isset($_GET['debug']));
-// ini_set('display_startup_errors', isset($_GET['debug']));
+
+$appRoot = function($path) {
+    return realpath(__DIR__ . '/../..' . $path);
+};
+
+ini_set('error_log', $appRoot('/error.log'));
+ini_set('display_errors', isset($_GET['debug']));
+ini_set('display_startup_errors', isset($_GET['debug']));
+ini_set('arg_separator.output', '&');
+
 stream_context_set_default(
     array(
         'http' => array(
@@ -9,7 +17,8 @@ stream_context_set_default(
         )
     )
 );
-require __DIR__ . '/../../autoload.inc.php';
+
+require $appRoot('/autoload.inc.php');
 
 $controller = new Cached(
     new BacklogController,
