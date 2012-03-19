@@ -7,6 +7,11 @@ class Crawler
     protected $webpage;
 
     /**
+     * @var integer
+     */
+    protected $maxScrapes = 25;
+
+    /**
      * @return void
      */
     public function __construct(Webpage $chatSearchUrl)
@@ -20,23 +25,15 @@ class Crawler
     public function findAllQuestionIds()
     {
         $allLinks = array();
-        $noResultsFound = false;
-        while (!$noResultsFound) {
-            $this->setUrlToNextPage();
+        $maxScrapes = $this->maxScrapes;
+        do {
+            $this->webpage->setUrlToNextPage();
             $links = $this->scrapeCurrentUrlForQuestionIds();
-            $noResultsFound = empty($links);
             $allLinks = array_merge($allLinks, $links);
-        }
+        } while (
+            --$maxScrapes !== 0 && !empty($links)
+        );
         return array_unique($allLinks);
-    }
-
-    /**
-     * @return void
-     */
-    protected function setUrlToNextPage()
-    {
-        $query = $this->webpage->getQuery();
-        $query['page'] = $query['page'] + 1;
     }
 
     /**

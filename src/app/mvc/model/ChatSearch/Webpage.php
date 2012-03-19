@@ -7,7 +7,7 @@ class Webpage extends Url
     protected $siteUrl = 'http://chat.stackoverflow.com/search';
 
     /**
-     * @var QueryString
+     * @var array
      */
     protected $query = array(
         'q' => 'cv-pls',
@@ -23,5 +23,14 @@ class Webpage extends Url
     {
         parent::__construct($this->siteUrl);
         $this->setQuery(new QueryString($this->query));
+    }
+
+    /**
+     * @return void
+     */
+    public function setUrlToNextPage()
+    {
+        $query = $this->getQuery();
+        $query['page'] = $query['page'] + 1;
     }
 }
