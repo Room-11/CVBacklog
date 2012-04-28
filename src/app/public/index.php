@@ -20,10 +20,10 @@ stream_context_set_default(
 );
 
 require $appRoot('/autoload.inc.php');
-
-$controller = new Cached(
-    new BacklogController,
+$backlog = new Cached(
+    new Backlog(new Crawler(new Webpage), new Client(new Questions)),
     realpath(__DIR__ . '/../cache')
 );
-$controller->defineCachingForMethod('handleRequest', 3600);
+$backlog->defineCachingForMethod('findAll', 3600);
+$controller = new BacklogController($backlog);
 echo $controller->handleRequest();

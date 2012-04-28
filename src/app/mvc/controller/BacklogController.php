@@ -2,12 +2,22 @@
 
 class BacklogController implements RequestHandler
 {
+    protected $backlog;
+
+    public function __construct($backlog)
+    {
+        $this->backlog = $backlog;
+    }
+
     public function handleRequest()
     {
-        $backlog = new Backlog(
-            new Crawler(new Webpage),
-            new Client(new Questions)
-        );
-        return new BacklogView($backlog->findAll());
+        return $this->isJsonRequest()
+            ? new JsonBacklogView($this->backlog->findAll())
+            : new BacklogView($this->backlog->findAll());
+    }
+
+    protected function isJsonRequest()
+    {
+        return strpos($_SERVER['HTTP_ACCEPT'], 'application/json') === 0;
     }
 }
