@@ -45,9 +45,9 @@ class BacklogView
         $ul = $dom->createElement('ul');
         foreach ($this->backlog as $item) {
             $ul->appendChild($dom->createElement('li'))
-                ->setAttribute('class', isset($item->closed_date) ? 'delv' : 'cv')
-                ->parentNode
                 ->appendChild($dom->createElement('a', $item->title))
+                    ->setAttribute('class', isset($item->closed_date) ? 'delv' : 'cv')
+                    ->parentNode
                     ->setAttribute('href', $item->link)
                     ->parentNode
                     ->setAttribute('title', $item->title);
