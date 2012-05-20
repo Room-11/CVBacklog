@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
-li.delv:before {
+a.delv:before {
 	content: '[DELV] '
 }
-li.cv:before {
+a.cv:before {
 	content: '[CV] '
 }
