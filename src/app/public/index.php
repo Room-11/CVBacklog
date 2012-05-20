@@ -4,6 +4,7 @@ $appRoot = function($path) {
     return realpath(__DIR__ . '/../..' . $path);
 };
 
+ini_set('log_errors', 1);
 ini_set('error_log', $appRoot('/error.log'));
 ini_set('display_errors', isset($_GET['debug']));
 ini_set('display_startup_errors', isset($_GET['debug']));
