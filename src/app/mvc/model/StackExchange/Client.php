@@ -25,6 +25,8 @@ class Client
             $result = $this->executeRequest($this->formatEndpoint($batch));
             if (isset($result->items)) {
                 $data = array_merge($data, $result->items);
+            } else {
+                error_log("Error fetching batch $i: " . var_export($result, true));
             }
         }
         return $data;
