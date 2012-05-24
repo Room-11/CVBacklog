@@ -26,10 +26,23 @@ class Client
             if (isset($result->items)) {
                 $data = array_merge($data, $result->items);
             } else {
-                error_log("Error fetching batch $i: " . var_export($result, true));
+                $this->raiseError($result);
             }
         }
         return $data;
+    }
+
+    protected function raiseError($result)
+    {
+        if (!isset($result->error_id)) {
+            throw new \Exception('An unknown Error Occured: ', var_export($result, true));
+        }
+        switch ($result->error_id) {
+            case '502':
+                throw new ThrottleViolation($result->error_message);
+            default:
+                throw new \Exception("Unknown SE.Api Error: " . var_export($result, true));
+        }
     }
 
     /**

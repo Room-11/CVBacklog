@@ -17,6 +17,7 @@ spl_autoload_register(
             'com\\github\\gooh\\cvbacklog\\querystring' => '/app/framework/Url/QueryString.php',
             'com\\github\\gooh\\cvbacklog\\questions' => '/app/mvc/model/StackExchange/Questions.php',
             'com\\github\\gooh\\cvbacklog\\requesthandler' => '/app/framework/RequestHandler.php',
+            'com\\github\\gooh\\cvbacklog\\throttleviolation' => '/app/mvc/model/StackExchange/ThrottleViolation.php',
             'com\\github\\gooh\\cvbacklog\\url' => '/app/framework/Url.php',
             'com\\github\\gooh\\cvbacklog\\webpage' => '/app/mvc/model/ChatSearch/Webpage.php'
           );
