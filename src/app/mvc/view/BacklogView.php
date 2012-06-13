@@ -9,7 +9,7 @@ class BacklogView
     /**
      * @var string
      */
-    protected $template = '/templates/backlog.php';
+    protected $template = '/templates/backlog.xhtml';
 
     /**
      * @param array $backlog
