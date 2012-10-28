@@ -10,7 +10,7 @@ class Webpage extends Url
      * @var array
      */
     protected $query = array(
-        'q' => 'cv-pls',
+        'q' => 'tag:cv-pls',
         'page' => 0,
         'pagesize' => 100,
         'sort' => 'newest'
