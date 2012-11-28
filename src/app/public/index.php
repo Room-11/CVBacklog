@@ -22,8 +22,14 @@ stream_context_set_default(
 
 require $appRoot('/autoload.inc.php');
 $backlog = new Cached(
-    new Backlog(new Crawler(new Webpage), new Client(new Questions)),
-    realpath(__DIR__ . '/../cache')
+    new Backlog(
+        new Crawler(new Webpage),
+        new Blacklisted(
+            new Client(new Questions),
+            include $appRoot('/config/blacklist.php')
+        )
+    ),
+    $appRoot('/cache')
 );
 $backlog->defineCachingForMethod('findAll', 3600);
 $controller = new BacklogController($backlog, new Url('http://cvbacklog.herokuapp.com'));
