@@ -10,6 +10,7 @@ spl_autoload_register(
             'com\\github\\gooh\\cvbacklog\\backlog' => '/app/mvc/model/Backlog.php',
             'com\\github\\gooh\\cvbacklog\\backlogcontroller' => '/app/mvc/controller/BacklogController.php',
             'com\\github\\gooh\\cvbacklog\\backlogview' => '/app/mvc/view/BacklogView.php',
+            'com\\github\\gooh\\cvbacklog\\blacklisted' => '/app/mvc/model/StackExchange/Blacklisted.php',
             'com\\github\\gooh\\cvbacklog\\jsonbacklogview' => '/app/mvc/view/JsonBacklogView.php',
             'com\\github\\gooh\\cvbacklog\\cached' => '/app/framework/Cached.php',
             'com\\github\\gooh\\cvbacklog\\client' => '/app/mvc/model/StackExchange/Client.php',
