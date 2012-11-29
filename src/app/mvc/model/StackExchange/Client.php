@@ -35,7 +35,7 @@ class Client
     protected function raiseError($result)
     {
         if (!isset($result->error_id)) {
-            throw new \Exception('An unknown Error Occurred: ', var_export($result, true));
+            throw new \Exception('An unknown Error Occurred: ' . var_export($result, true));
         }
         switch ($result->error_id) {
             case '502':
