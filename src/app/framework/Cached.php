@@ -30,7 +30,8 @@ class Cached
      * @param string $method
      * @param integer $timeToLive
      */
-    public function defineCachingForMethod($method, $timeToLive) {
+    public function defineCachingForMethod($method, $timeToLive) 
+    {
         $this->methods[$method] = $timeToLive;
     }
 
