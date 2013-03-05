@@ -11,6 +11,7 @@ class Webpage extends Url
      */
     protected $query = array(
         'q' => 'tag:cv-pls',
+        'room' => 11,
         'page' => 0,
         'pagesize' => 100,
         'sort' => 'newest'
