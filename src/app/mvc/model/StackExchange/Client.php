@@ -22,10 +22,8 @@ class Client
     {
         $data = array();
         foreach (array_chunk($ids, 100) as $i => $batch) {
-            if ($i % 10) {
-                // be more easy on the SE.API
-                sleep(1);
-            }
+            // be easy with the SE.API
+            usleep(100);
             $result = $this->executeRequest($this->formatEndpoint($batch));
             if (isset($result->items)) {
                 $data = array_merge($data, $result->items);
