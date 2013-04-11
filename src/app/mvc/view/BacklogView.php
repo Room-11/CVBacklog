@@ -24,6 +24,12 @@ class BacklogView
      */
     public function render()
     {
+        header('Content-Type: text/html; charset=utf-8');
+        return $this->renderBacklog();
+    }
+
+    public function renderBacklog()
+    {
         $dom = new \DOMDocument;
         $dom->preserveWhiteSpace = false;
         $dom->load(__DIR__ . $this->template);
@@ -33,7 +39,7 @@ class BacklogView
             $backlog
         );
         $dom->formatOutput = true;
-        return $dom->saveXML($dom->documentElement);
+        return $dom->saveXML($dom->documentElement);        
     }
 
     /**
