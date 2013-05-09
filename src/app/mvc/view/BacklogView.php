@@ -1,5 +1,5 @@
 <?php namespace com\github\gooh\CVBacklog;
-class BacklogView
+class BacklogView implements View
 {
     /**
      * @var array
@@ -48,26 +48,16 @@ class BacklogView
      */
     protected function createXhtmlItemList(\DOMDocument $dom)
     {
-		$delvs = $cvs = array();
-		
-        foreach ($this->backlog as $item) {
-				$li = $dom->createElement('li');
-                $li->appendChild($dom->createElement('a', $item->title))
-                    ->setAttribute('class', isset($item->closed_date) ? 'delv' : 'cv')
-                    ->parentNode
-                    ->setAttribute('href', $item->link)
-                    ->parentNode
-                    ->setAttribute('title', $item->title);
-				if(isset($item->closed_date))
-					$delvs[] = $li;
-				else
-					$cvs[] = $li;
-        }
         $ul = $dom->createElement('ul');
-		foreach($cvs as $li)
-			$ul->appendChild($li);
-		foreach($delvs as $li)
-			$ul->appendChild($li);
+        foreach ($this->backlog as $item) {
+            $ul->appendChild($dom->createElement('li'))
+                ->appendChild($dom->createElement('a', $item->title))
+                ->setAttribute('class', isset($item->closed_date) ? 'delv' : 'cv')
+                ->parentNode
+                ->setAttribute('href', $item->link)
+                ->parentNode
+                ->setAttribute('title', $item->title);
+        }
         return $ul;
     }
 

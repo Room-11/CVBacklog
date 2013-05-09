@@ -28,6 +28,7 @@ class BacklogController implements RequestHandler
 
     protected function isJsonRequest()
     {
-        return strpos($_SERVER['HTTP_ACCEPT'], 'application/json') === 0;
+        return isset($_SERVER['HTTP_ACCEPT'])
+            && strpos($_SERVER['HTTP_ACCEPT'], 'application/json') === 0;
     }
 }
