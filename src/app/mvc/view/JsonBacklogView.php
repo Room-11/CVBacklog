@@ -1,5 +1,5 @@
 <?php namespace com\github\gooh\CVBacklog;
-class JsonBacklogView
+class JsonBacklogView implements View
 {
     /**
      * @var array
