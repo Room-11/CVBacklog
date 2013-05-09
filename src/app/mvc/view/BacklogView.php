@@ -48,16 +48,26 @@ class BacklogView
      */
     protected function createXhtmlItemList(\DOMDocument $dom)
     {
-        $ul = $dom->createElement('ul');
+		$delvs = $cvs = array();
+		
         foreach ($this->backlog as $item) {
-            $ul->appendChild($dom->createElement('li'))
-                ->appendChild($dom->createElement('a', $item->title))
+				$li = $dom->createElement('li');
+                $li->appendChild($dom->createElement('a', $item->title))
                     ->setAttribute('class', isset($item->closed_date) ? 'delv' : 'cv')
                     ->parentNode
                     ->setAttribute('href', $item->link)
                     ->parentNode
                     ->setAttribute('title', $item->title);
+				if(isset($item->closed_date))
+					$delvs[] = $li;
+				else
+					$cvs[] = $li;
         }
+        $ul = $dom->createElement('ul');
+		foreach($cvs as $li)
+			$ul->appendChild($li);
+		foreach($delvs as $li)
+			$ul->appendChild($li);
         return $ul;
     }
 
