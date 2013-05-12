@@ -25,11 +25,10 @@ class Client
             // be easy with the SE.API
             usleep(100);
             $result = $this->executeRequest($this->formatEndpoint($batch));
-            if (isset($result->items)) {
-                $data = array_merge($data, $result->items);
-            } else {
+            if (false === isset($result->items)) {
                 $this->raiseError($result);
             }
+            $data = array_merge($data, $result->items);            
         }
         return $data;
     }
