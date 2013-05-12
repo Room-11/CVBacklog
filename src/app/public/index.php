@@ -29,9 +29,9 @@ $backlog = new Cached(
                 new Client(new Questions),
                 include $appRoot('/app/config/blacklist.php')
             )
-        ),
-        $appRoot('/app/cache')
-    )
+        )
+    ),
+    $appRoot('/app/cache')
 );
 $backlog->defineCachingForMethod('findAll', 900);
 $controller = new BacklogController($backlog, new Url('http://cvbacklog.herokuapp.com'));
