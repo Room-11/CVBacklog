@@ -1,0 +1,4 @@
+# Cache files will be created in this folder by default
+# IGNOAR ALL ZE FILES!!1
+*
+!.gitignore
