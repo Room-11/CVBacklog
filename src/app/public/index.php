@@ -33,6 +33,6 @@ $backlog = new Cached(
         $appRoot('/app/cache')
     )
 );
-$backlog->defineCachingForMethod('findAll', 3600);
+$backlog->defineCachingForMethod('findAll', 900);
 $controller = new BacklogController($backlog, new Url('http://cvbacklog.herokuapp.com'));
 echo $controller->handleRequest();
